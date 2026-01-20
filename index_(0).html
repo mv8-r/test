@@ -1,0 +1,34 @@
+<?php
+require "config.php";
+
+$videos = [];
+if (file_exists($data_file)) {
+  $videos = json_decode(file_get_contents($data_file), true);
+}
+
+usort($videos, function($a, $b) {
+  return $b["time"] - $a["time"];
+});
+?>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>سكسي عراقي</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<h1>سكسي عراقي 🔥</h1>
+<div class="container">
+<?php foreach($videos as $v): ?>
+  <div class="video-card">
+    <video controls>
+      <source src="videos/<?php echo htmlspecialchars($v["file"]); ?>">
+    </video>
+    <div class="comment"><?php echo htmlspecialchars($v["comment"]); ?></div>
+    <div class="desc"><?php echo htmlspecialchars($v["desc"]); ?></div>
+  </div>
+<?php endforeach; ?>
+</div>
+</body>
+</html>
