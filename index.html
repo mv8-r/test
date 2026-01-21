@@ -1,34 +1,95 @@
-<?php
-require "config.php";
-
-$videos = [];
-if (file_exists($data_file)) {
-  $videos = json_decode(file_get_contents($data_file), true);
-}
-
-usort($videos, function($a, $b) {
-  return $b["time"] - $a["time"];
-});
-?>
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>سكسي عراقي</title>
-  <link rel="stylesheet" href="assets/style.css">
+    <meta charset="UTF-8">
+    <title>My Dark Website</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at top, #2b0000, #000);
+            color: #fff;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+            background: rgba(0,0,0,0.6);
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+
+        nav a {
+            color: #ff3c00;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            color: #ff3c00;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
-<h1>سكسي عراقي 🔥</h1>
-<div class="container">
-<?php foreach($videos as $v): ?>
-  <div class="video-card">
-    <video controls>
-      <source src="videos/<?php echo htmlspecialchars($v["file"]); ?>">
-    </video>
-    <div class="comment"><?php echo htmlspecialchars($v["comment"]); ?></div>
-    <div class="desc"><?php echo htmlspecialchars($v["desc"]); ?></div>
-  </div>
-<?php endforeach; ?>
-</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <section class="hero">
+        <div>
+            <h1>WELCOME</h1>
+            <p>
+                هذا موقع بتصميم داكن واحترافي  
+                بدون صور مخيفة أو شياطين  
+                جاهز للتطوير وربطه بـ PHP مستقبلاً
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 - All Rights Reserved
+    </footer>
+
 </body>
 </html>
